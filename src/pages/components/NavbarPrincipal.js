@@ -58,7 +58,7 @@ export default function NavbarPrincipal({ onOpenModal }) {
                     </button>
                 </li>
                 <li>
-                  <Link href="/broker/atualizarDados">
+                  <Link href="/atualizar_dados">
                   <FontAwesomeIcon icon={faUserGear} style={{ color: "#ffffff" }} />
                   </Link>
                 </li>
