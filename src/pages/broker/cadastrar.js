@@ -1,14 +1,11 @@
 import NavbarPrincipal from "../components/NavbarPrincipal"
- telas-broker
-
 import styles from '@/styles/Broker.module.css'
- main
+
 
 export default function PaginaCadastrar(){
     return(
         <>
         <NavbarPrincipal/>
- telas-broker
         <div className='container'>
             <form>
             <fieldset>
@@ -141,6 +138,5 @@ export default function PaginaCadastrar(){
                 </form>
             </div>
         </div></>
- main
     )
 }
