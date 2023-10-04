@@ -1,0 +1,44 @@
+.background {
+    color: #262e38;
+    background-color: #fff;
+    background-size: center;
+    background-position: center;
+    padding: 100px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: left;
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    min-height: 100vh;
+    background-image: url('/images/iot_image.jpeg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+}
+
+.form {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   gap: 6px;
+   font-size: 20px;
+   border-radius: 30px;
+    
+}
+
+.form2{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    border-radius: 30px;
+}
+
+.cadastrado{
+    position: absolute;
+    
+    top: 650px;
+    left: 270px;
+}
