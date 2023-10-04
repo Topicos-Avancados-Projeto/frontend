@@ -11,9 +11,21 @@ import Link from 'next/link';
    const [passwordVisible, setPasswordVisible] = useState(false);
 
    const login = async () => {
-      try {
+       try {
          const data = await api.patch('/login', { email: '', senha: '' });
          localStorage.setItem('token', JSON.stringify(data));
+
+         const response = await axios.post('/login', {
+            cpf: '123.090.678-23', 
+            senha: 'Senha1*', 
+          });
+
+          const { authorization } = response.headers;
+
+          localStorage.setItem('token', authorization);
+
+          window.location.href = '/tela_principal';
+
       } catch (error) {
          console.error("Erro ao fazer login:", error);
       }
