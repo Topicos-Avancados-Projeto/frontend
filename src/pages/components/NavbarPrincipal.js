@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGear } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/NavbarPrincipal.module.css';
-import Modal from "./modal";
+import Modal from "./Modal";
 import tela_principal from "../tela_principal";
 
 export default function NavbarPrincipal({ onOpenModal }) {
@@ -11,11 +11,11 @@ export default function NavbarPrincipal({ onOpenModal }) {
         <nav className={styles.navbar}>
             <ul className={styles.link_items}>
                 <li className={`${styles.dropdown} ${styles.spaceRight}`}>
-                    <span>☰</span> 
+                    <span>☰</span>
                     <ul className={styles.dropdownContent}>
-                       <li>
-                        <h2 className={styles.lh2}>Broker</h2>
-                       </li>
+                        <li>
+                            <h2 className={styles.lh2}>Broker</h2>
+                        </li>
 
                         <li>
                             <Link href="/broker/cadastrar">
@@ -46,6 +46,12 @@ export default function NavbarPrincipal({ onOpenModal }) {
                             <Link href="/broker/testar">
                                 Testar
                             </Link>
+
+                            <Link href="/usuario/listar">
+                                <h1 className={styles.lh2}>Usuário</h1>
+                            </Link>
+
+
                         </li>
                     </ul>
                 </li>
@@ -54,13 +60,13 @@ export default function NavbarPrincipal({ onOpenModal }) {
                 </li>
                 <li className={styles.spaceLeft}>
                     <button onClick={onOpenModal}>
-                         Sair
+                        Sair
                     </button>
                 </li>
                 <li>
-                  <Link href="/broker/atualizarDados">
-                  <FontAwesomeIcon icon={faUserGear} style={{ color: "#ffffff" }} />
-                  </Link>
+                    <Link href="/atualizar_dados">
+                        <FontAwesomeIcon icon={faUserGear} style={{ color: "#ffffff" }} />
+                    </Link>
                 </li>
             </ul>
         </nav>

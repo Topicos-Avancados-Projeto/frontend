@@ -1,0 +1,114 @@
+
+.container {
+  display: grid; 
+  place-items: center; 
+  background-color: #D9DCE1;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 60px;
+  width: 85%;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+.broker div{
+  display: inline-block;
+}
+
+.broker fieldset{
+  border: 0;
+  padding-left: 10%;
+  display: flex;
+}
+
+.broker input{
+  border-radius: 3px;
+  border-width: 1px;
+  height: 30px;
+  margin-right: 30px;
+}
+
+.broker input:focus{
+  background: #F2F2F2;
+}
+
+.titulo{
+  font-family: sans-serif;
+}
+
+.icone-config{
+  position: relative;
+  display: block;
+  width: 40px;
+  color: white;
+  margin-right: 40px;
+  margin-left: 20px;
+}
+
+.broker label{
+  display: block;
+}
+
+.button{
+  background-color: #333333;
+  color: white;
+  height: 35px;
+  width: 100px;
+  border-radius: 3px;
+  border: 0;
+}
+
+.linhastabela {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+}
+
+.fundolistar{
+  display: block; 
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 80px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+
+.divs {
+  background-color: #F2F2F2;
+  border: 1px solid #000;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.nomes {
+  font-family: sans-serif;
+  font-size: 18pt;
+  display: inline-block;
+}
+
+.deseja { 
+  text-decoration: underline;
+  color: #000;
+}
+
+.broker button {
+  float: right;
+  border-width: 10px;
+  border-top: 0px;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.broker img {
+  width: 25px;
+  right: 25px;
+}
