@@ -1,14 +1,10 @@
 import ListarDispositivo from "../components/ListarDispositivo"
 import NavbarPrincipal from "../components/NavbarPrincipal"
- telas-broker
-
 import styles from '@/styles/Broker.module.css'
- main
 
 export default function PaginaRemover(){
     return(
     <><NavbarPrincipal/>
- telas-broker
     <fieldset className="fundolistar">
         <fieldset className="linhastabela">
             <ListarDispositivo />        
@@ -31,7 +27,5 @@ export default function PaginaRemover(){
         </fieldset>
     </div>
     </>
-main
-    
     )
 }
