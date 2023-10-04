@@ -11,14 +11,28 @@ export default function Cadastro() {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const cadastro = async () => {
-        try {
+         try {
             const data = await api.patch('/cadastro', { email: '', senha: '' });
             localStorage.setItem('token', JSON.stringify(data));
+
+
+            const response = await axios.post('/cadastro', {
+                nome: "Thiago",
+                cpf: "123.090.678-23",
+                email: "thiagoprofessor@gmail.com",
+                senha: "Senha1*"
+            });
+
+            if (response.status === 201) {
+                console.log('Cadastro bem-sucedido');
+                localStorage.setItem('token', response.data.token);
+              } else {
+                console.error('Erro ao fazer cadastro:', response.data.msg);
+              }
         } catch (error) {
             console.error("Erro ao fazer cadastro:", error);
         }
     };
-
     return (
         <div className={styles.styles}>
             <NavbarCadastro />
