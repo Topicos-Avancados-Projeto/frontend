@@ -10,25 +10,27 @@ import Link from 'next/link';
   export default function Login(){
    const [passwordVisible, setPasswordVisible] = useState(false);
 
-   const login = async () => {
-       try {
-         const data = await api.patch('/login', { email: '', senha: '' });
-         localStorage.setItem('token', JSON.stringify(data));
-
-         const response = await axios.post('/login', {
-            cpf: '123.090.678-23', 
-            senha: 'Senha1*', 
-          });
-
-          const { authorization } = response.headers;
-
-          localStorage.setItem('token', authorization);
-
-          window.location.href = '/tela_principal';
-
-      } catch (error) {
-         console.error("Erro ao fazer login:", error);
-      }
+   const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3003', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            cpf: 'Cpf',
+            password: 'Senha',
+          }),
+        });
+        if (response.ok) {
+         const result = await response.json();
+         setData(result); 
+       } else {
+         console.error('Erro ao fazer a solicitação HTTP.');
+       }
+     } catch (error) {
+       console.error('Erro ao fazer a solicitação HTTP:', error);
+     }
    };
    
    return(
