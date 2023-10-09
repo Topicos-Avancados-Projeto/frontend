@@ -9,48 +9,70 @@ import Link from 'next/link';
 
 export default function Cadastro() {
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
 
-    const cadastro = async () => {
-         try {
-            const data = await api.patch('/cadastro', { email: '', senha: '' });
-            localStorage.setItem('token', JSON.stringify(data));
-
-
-            const response = await axios.post('/cadastro', {
-                nome: "Thiago",
-                cpf: "123.090.678-23",
-                email: "thiagoprofessor@gmail.com",
-                senha: "Senha1*"
+    const cadastrar = async () => {
+        try {
+            const response = await fetch('http://localhost:3003', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    nome,
+                    cpf,
+                    email,
+                    senha,
+                }),
             });
 
-            if (response.status === 201) {
-                console.log('Cadastro bem-sucedido');
-                localStorage.setItem('token', response.data.token);
-              } else {
-                console.error('Erro ao fazer cadastro:', response.data.msg);
-              }
+            if (response.ok) {
+                console.log('Cadastro realizado com sucesso!');
+            } else {
+                console.error('Erro ao cadastrar. Verifique os dados e tente novamente.');
+            }
         } catch (error) {
-            console.error("Erro ao fazer cadastro:", error);
+            console.error('Erro ao realizar o cadastro:', error);
         }
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        cadastrar(); 
+    };
+
     return (
         <div className={styles.styles}>
             <NavbarCadastro />
             <div className={styles.background}>
                 <div className="background-image"></div>
                 <CadastroCard titulo="Cadastre-se">
-                    <form className={styles.form}>
+                    <form className={styles.form} onSubmit={handleSubmit}>
                         <label>Nome</label>
-                        <Input type="string" placeholder="Digite seu nome" />
+                        <Input type="string" 
+                        placeholder="Digite seu nome" 
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}/>
                         <label>CPF</label>
-                        <Input type="number" placeholder="Enter a value" />
+                        <Input type="number" 
+                        placeholder="Enter a value" 
+                        value={cpf}
+                        onChange={(e) => setCpf(e.target.value)}/>
                         <label>Email</label>
-                        <Input type="string" placeholder="Enter an email" />
+                        <Input type="string" 
+                        placeholder="Enter an email" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}/>
                         <label>Password</label>
 
                         <Input
                             type={passwordVisible ? 'text' : 'password'}
                             placeholder="Enter your password"
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
                         />
 
                         <button
@@ -80,7 +102,7 @@ export default function Cadastro() {
                         </form>
 
                         <Link href="/tela_principal">
-                            <Button>Entrar</Button>
+                            <Button type="submit">Entrar</Button>
                         </Link>
 
 
