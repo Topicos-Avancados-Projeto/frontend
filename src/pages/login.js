@@ -15,19 +15,20 @@ import router from 'next/router';
 
    const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3003', {
+        const response = await fetch('http://localhost:3003/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             cpf,
-            password,
+            senha,
           }),
         });
         if (response.ok) {
          const result = await response.json();
          setData(result); 
+         console.log('Login realizado com sucesso!');
          router.push('/tela_principal')
        } else {
          console.error('Erro ao fazer a solicitação HTTP.');
@@ -50,12 +51,14 @@ import router from 'next/router';
          <LoginCard titulo="Login">
             <form className={styles.form} onSubmit={handleSubmit}>
                <label>CPF</label>
-               <Input type="number" placeholder="Enter a value"/>
+               <Input type="text" placeholder="Enter a value" onChange={(e) => setCpf(e.target.value)}/>
                <label>Password</label>
                
                   <Input
                   type={passwordVisible ? 'text' : 'password'}
                   placeholder="Enter your password"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
                    />
   
                   <button

@@ -16,7 +16,7 @@ export default function Cadastro() {
 
     const cadastrar = async () => {
         try {
-            const response = await fetch('http://localhost:3003', {
+            const response = await fetch('http://localhost:3003/cadastro', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,17 +52,17 @@ export default function Cadastro() {
                 <CadastroCard titulo="Cadastre-se">
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <label>Nome</label>
-                        <Input type="string" 
+                        <Input type="text" 
                         placeholder="Digite seu nome" 
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}/>
                         <label>CPF</label>
-                        <Input type="number" 
+                        <Input type="text" 
                         placeholder="Enter a value" 
                         value={cpf}
                         onChange={(e) => setCpf(e.target.value)}/>
                         <label>Email</label>
-                        <Input type="string" 
+                        <Input type="email" 
                         placeholder="Enter an email" 
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}/>
@@ -102,7 +102,7 @@ export default function Cadastro() {
                         </form>
 
                         <Link href="/tela_principal">
-                            <Button type="submit">Entrar</Button>
+                            <Button type="submit">Cadastrar</Button>
                         </Link>
 
 
