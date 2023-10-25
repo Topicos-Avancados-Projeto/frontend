@@ -5,13 +5,14 @@ import Input from "./components/input"
 import Button from "./components/button"
 import NavbarLogin from "./components/NavbarLogin"
 import Link from 'next/link';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 
 
   export default function Login(){
    const [passwordVisible, setPasswordVisible] = useState(false);
    const [cpf, setCpf] = useState(''); 
    const [senha, setSenha] = useState('');
+   const router = useRouter();
 
    const fetchData = async () => {
       try {
