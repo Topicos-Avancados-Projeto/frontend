@@ -4,15 +4,12 @@ import styles from '@/styles/Login.module.css'
 import Input from "./components/input"
 import Button from "./components/button"
 import NavbarLogin from "./components/NavbarLogin"
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-
+import router from 'next/router';
 
   export default function Login(){
    const [passwordVisible, setPasswordVisible] = useState(false);
    const [cpf, setCpf] = useState(''); 
-   const [senha, setSenha] = useState('');
-   const router = useRouter();
+   const [password, setSenha] = useState('');
 
    const fetchData = async () => {
       try {
@@ -23,17 +20,17 @@ import { useRouter } from 'next/router';
           },
           body: JSON.stringify({
             cpf,
-            senha,
-          }),
+            password
+          })
         });
         if (response.ok) {
-         const result = await response.json();
-         setData(result); 
-         console.log('Login realizado com sucesso!');
-         router.push('/tela_principal')
-       } else {
-         console.error('Erro ao fazer a solicitação HTTP.');
-       }
+          const auth = response.headers.get("Authorization").toString();
+          localStorage.setItem('Authorization', auth);
+          console.log('Login realizado com sucesso!');
+          router.push('/tela_principal')
+        } else {
+          console.error('Erro ao fazer a solicitação HTTP.');
+        }
      } catch (error) {
        console.error('Erro ao fazer a solicitação HTTP:', error);
      }
@@ -58,7 +55,7 @@ import { useRouter } from 'next/router';
                   <Input
                   type={passwordVisible ? 'text' : 'password'}
                   placeholder="Enter your password"
-                  value={senha}
+                  value={password}
                   onChange={(e) => setSenha(e.target.value)}
                    />
   
