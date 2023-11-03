@@ -11,35 +11,35 @@ import router from 'next/router';
    const [cpf, setCpf] = useState(''); 
    const [password, setSenha] = useState('');
 
-  // const fetchData = async () => {
-     // try {
-        //const response = await fetch('http://localhost:3003/login', {
-         // method: 'POST',
-          //headers: {
-            //'Content-Type': 'application/json',
-          //},
-          //body: JSON.stringify({
-            //cpf,
-          //  password
-        //  })
-       // });
-      //  if (response.ok) {
-      //    const auth = response.headers.get("Authorization").toString();
-       //   localStorage.setItem('Authorization', auth);
-      //    console.log('Login realizado com sucesso!');
-        //  router.push('/tela_principal')
-      //  } else {
-      //    console.error('Erro ao fazer a solicitação HTTP.');
-    //    }
-    // } catch (error) {
-    //   console.error('Erro ao fazer a solicitação HTTP:', error);
-    // }
- //  };
+   const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3003/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            cpf,
+            password
+          })
+        });
+        if (response.ok) {
+          const auth = response.headers.get("Authorization").toString();
+          localStorage.setItem('Authorization', auth);
+          console.log('Login realizado com sucesso!');
+          router.push('/tela_principal')
+        } else {
+          console.error('Erro ao fazer a solicitação HTTP.');
+        }
+     } catch (error) {
+       console.error('Erro ao fazer a solicitação HTTP:', error);
+     }
+   };
 
-  // const handleSubmit = (e) => {
-    //e.preventDefault(); 
-    //fetchData(); 
-  //};
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    fetchData(); 
+  };
    
    return(
       <div className={styles.styles}>
