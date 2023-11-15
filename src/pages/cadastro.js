@@ -14,34 +14,38 @@ export default function Cadastro() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const cadastrar = async () => {
+    const sendRequest = async (url, data) => {
         try {
             const response = await fetch('http://localhost:3003/cadastro', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    nome,
-                    cpf,
-                    email,
-                    senha,
-                }),
+                body: JSON.stringify(data),
             });
 
             if (response.ok) {
-                console.log('Cadastro realizado com sucesso!');
+                console.log('Operação realizada com sucesso!');
+                if (url === 'http://localhost:3003/cadastro') {
+                    router.push('/login');
+                }
             } else {
-                console.error('Erro ao cadastrar. Verifique os dados e tente novamente.');
+                console.error('Erro na operação. Verifique os dados e tente novamente.');
             }
         } catch (error) {
-            console.error('Erro ao realizar o cadastro:', error);
+            console.error('Erro na operação:', error);
         }
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault(); 
-        cadastrar(); 
+        e.preventDefault();
+        const data = {
+            nome,
+            cpf,
+            email,
+            senha,
+        };
+        sendRequest('http://localhost:3003/cadastro', data);
     };
 
     return (

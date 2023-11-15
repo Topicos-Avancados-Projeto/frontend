@@ -1,6 +1,6 @@
 import Head from "next/head"
 import NavbarPrincipal from "./components/NavbarPrincipal"
-import Modal from "./components/modal"
+import Modal from "@/pages/components/Modal"
 import { useState } from "react";
 import Link from "next/link";
 
