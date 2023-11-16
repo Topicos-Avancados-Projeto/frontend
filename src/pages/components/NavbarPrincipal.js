@@ -51,6 +51,10 @@ export default function NavbarPrincipal({ onOpenModal }) {
                                 <h1 className={styles.lh2}>Usuário</h1>
                             </Link>
 
+                            <Link href="/Dispositivo/listar">
+                                <h1 className={styles.lh2}>Dispositivo</h1>
+                            </Link>
+
 
                         </li>
                     </ul>
