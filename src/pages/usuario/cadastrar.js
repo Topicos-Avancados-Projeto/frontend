@@ -2,6 +2,29 @@ import NavbarPrincipal from "../components/NavbarPrincipal"
 import styles from '@/styles/usuario.module.css'
 
 export default function PaginaCadastrar(){
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        try {
+          const response = await fetch('http://localhost:3003/user', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+              tipoUsuario,
+            }),
+          });
+    
+          const data = await response.json();
+          console.log(data);
+        } catch (error) {
+            console.error('Erro ao fazer a solicitação HTTP:', error);
+        }
+      };
+
     return(
         <>
         <NavbarPrincipal/>

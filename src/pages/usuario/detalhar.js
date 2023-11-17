@@ -2,6 +2,43 @@ import NavbarPrincipal from "../components/NavbarPrincipal"
 import styles from '@/styles/usuario.module.css'
 
 export default function PaginaDetalhar(){
+  const [formData, setFormData] = useState({
+    name: '',
+    port: 0,
+    host: '',
+    username: '',
+    password: '',
+    KeepAlive: '',
+    SSL: '',
+    LastTopic: '', 
+    LastQos: '',
+    LastRetain: '', 
+    LastMensage: ''
+  });
+
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3003/user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('User created successfully');
+      } else {
+        console.error('Failed to create user');
+      }
+    } catch (error) {
+      console.error('Error creating user:', error);
+    }
+  };
+
     return (
     <>
     <NavbarPrincipal/>
