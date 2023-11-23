@@ -2,10 +2,14 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGear } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/NavbarPrincipal.module.css';
-import Modal from "./Modal";
-import tela_principal from "../tela_principal";
+import router from 'next/router'
 
 export default function NavbarPrincipal({ onOpenModal }) {
+    const logout = ()=>{
+        localStorage.removeItem('Authorization')
+        router.push("/")
+    }
+
     return (
 
         <nav className={styles.navbar}>
@@ -63,7 +67,7 @@ export default function NavbarPrincipal({ onOpenModal }) {
                     <h1>IOT</h1>
                 </li>
                 <li className={styles.spaceLeft}>
-                    <button onClick={onOpenModal}>
+                    <button onClick={logout}>
                         Sair
                     </button>
                 </li>

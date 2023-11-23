@@ -5,18 +5,21 @@ import Input from "./components/input"
 import Button from "./components/CadastroButton"
 import NavbarCadastro from "./components/NavbarCadastro"
 import Link from 'next/link';
-
+import router from "next/router"
 
 export default function Cadastro() {
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const [nome, setNome] = useState('');
+    const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [password, setPassword] = useState('');
+    const [dia, setDia] = useState('');
+    const [mes, setMes] = useState('');
+    const [ano, setAno]= useState('');
 
     const sendRequest = async (url, data) => {
         try {
-            const response = await fetch('http://localhost:3003/cadastro', {
+            const response = await fetch('http://localhost:3003/user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,7 +29,8 @@ export default function Cadastro() {
 
             if (response.ok) {
                 console.log('Operação realizada com sucesso!');
-                if (url === 'http://localhost:3003/cadastro') {
+                if (response.ok) {
+
                     router.push('/login');
                 }
             } else {
@@ -39,11 +43,13 @@ export default function Cadastro() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const date_of_birth = dia+"/"+mes+"/"+ano;
         const data = {
-            nome,
+            name,
             cpf,
             email,
-            senha,
+            password,
+            date_of_birth
         };
         sendRequest('http://localhost:3003/cadastro', data);
     };
@@ -58,8 +64,8 @@ export default function Cadastro() {
                         <label>Nome</label>
                         <Input type="text" 
                         placeholder="Digite seu nome" 
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}/>
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}/>
                         <label>CPF</label>
                         <Input type="text" 
                         placeholder="Enter a value" 
@@ -75,8 +81,8 @@ export default function Cadastro() {
                         <Input
                             type={passwordVisible ? 'text' : 'password'}
                             placeholder="Enter your password"
-                            value={senha}
-                            onChange={(e) => setSenha(e.target.value)}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
 
                         <button
@@ -89,25 +95,26 @@ export default function Cadastro() {
                             <label>Data de nascimento</label>
                         <form className={styles.form2}>                            
                             <input   
-                                style={{padding: '20px' }}                         
+                                style={{padding: '20px' }}
                                 type="number"
-                                placeholder="Dia"                                                        
+                                placeholder="Dia"
+                                onChange={(e)=>setDia(e.target.value)}
                             />                          
                             <input
                             style={{padding: '20px' }}
                                 type="text"
-                                placeholder="Mês"                                                           
+                                placeholder="Mês"
+                                onChange={(e)=>setMes(e.target.value)}
                             />                            
                             <input
                             style={{padding: '20px' }}
                                 type="number"
-                                placeholder="Ano"                                       
+                                placeholder="Ano"
+                                onChange={(e)=>setAno(e.target.value)}
                             />
                         </form>
 
-                        <Link href="/tela_principal">
                             <Button type="submit">Cadastrar</Button>
-                        </Link>
 
 
                         <div className={styles.cadastrado}>
