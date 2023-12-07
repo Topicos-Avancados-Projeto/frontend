@@ -3,8 +3,25 @@ import { useRouter } from "next/router"
 import React, { useState } from 'react'
 import styles from '@/styles/Listar.module.css'
 
-export default function ListarDispositivo(){
+export default function ListarDispositivo(broker){
+    return(
+        <fieldset key={broker.id}>
+        <div>
+            <label>{broker.name}</label>
+        </div>
+        <div>
+            <a href= {`./editar?id=${broker.id_client}`}><button><img src="/images/lapis.png" /></button></a>
+            <a href={`./detalhar?id=${broker.id_client}`}><button><img src="/images/lupa.png"/></button></a>
+            <a href={`./remover?id=${broker.id_client}`}>
+                <button><img src="/images/lixo.png" /></button>
+            </a>
+            <button><img src="/images/computador.png" /></button>
+        </div>
+    </fieldset>
+    )
+}
 
+/*
     const [showDtos, setShowDtos] = useState()
     const apiUrl = 'http://localhost:3003/broker_client/'
     let displayDto
@@ -14,23 +31,10 @@ export default function ListarDispositivo(){
         const dto = await data.json()
         displayDto = dto.map(function(dtos){
             return(
-                <fieldset key={dto.id}>
-                    <div>
-                        <label>{dto.name}</label>
-                    </div>
-                    <div>
-                        <button><img src="/images/lixo.png" /></button>
-                        <a href= "editar"><button><img src="/images/lapis.png" /></button></a>
-                        <a href="detalhar"><button><img src="/images/lupa.png"/></button></a>
-                        <button><img src="/images/computador.png" /></button>
-                    </div>
-                </fieldset>
             )
         })
         setShowDtos(displayDto)
     }
-    
-    return(
-        <>{showDtos}</>
-    )
-}
+
+
+*/

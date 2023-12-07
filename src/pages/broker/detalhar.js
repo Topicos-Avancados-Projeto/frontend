@@ -1,7 +1,28 @@
+import { useRouter } from "next/router"
 import NavbarPrincipal from "../components/NavbarPrincipal"
 import styles from '@/styles/Broker.module.css'
+import {useState, useEffect} from 'react'
 
 export default function PaginaDetalhar(){
+  const [data, setData] = useState([]);
+    const {query} = useRouter();
+    useEffect(()=>{
+    const getData = async()=>{
+      const response = await fetch(`http://localhost:3003/broker_client/${query.id}`,{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('Authorization')
+        }
+      });
+      if(!response.ok){
+        console.error('Erro ao fazer a solicitação HTTP.');
+      }else{
+        const broker = await response.json();
+        setData(broker);
+      }
+    }
+    getData();
+  })
     return (
     <>
     <NavbarPrincipal/>
@@ -14,57 +35,53 @@ export default function PaginaDetalhar(){
         <fieldset>
           <div>
             <label id='label'>Name</label>
-            <input type="text" style={{width: 370}}/>
+            <input value={data.name} type="text" style={{width: 370}}/>
           </div>
           <div>
             <label id='label'>Port</label>
-            <input type="number" style={{width: 70}}/>
+            <input value={data.broker_port} type="number" style={{width: 70}}/>
           </div>
           <div>
             <label id='label'>Host</label>
-            <input type="text" style={{width: 380}}/>
+            <input value={data.broker_host} type="text" style={{width: 380}}/>
           </div>
         </fieldset>
         <fieldset>
           <div>
             <label id='label'>Username</label>
-            <input type="text" style={{width: 250}}/>
+            <input value={data.username} type="text" style={{width: 250}}/>
           </div>
           <div>
             <label id='label'>Password</label>
-            <input type="text"/>
+            <input value={data.password} type="text"/>
           </div>
           <div>
             <label id='label'>Keep Alive</label>
-            <input type="number" style={{width: 190}}/>
-          </div>
-          <div>
-            <label id='label'>SSL</label>
-            <input type="checkbox" style={{width: 40}}/>
+            <input value={data.keepalive} type="number" style={{width: 190}}/>
           </div>
           <div>
             <label id='label'>Clean Session</label>
-            <input type="checkbox" style={{width: 40}}/>
+            <input checked={data.cleansession} type="checkbox" style={{width: 40}}/>
           </div>
         </fieldset>
         <fieldset>
           <div>
             <label id='label'>Last-Will Topic</label>
-            <input type="text" style={{width: 450, marginRight: 75}}/>
+            <input value={data.lastwilltopic} type="text" style={{width: 450, marginRight: 75}}/>
           </div>
           <div> 
             <label id='label'>Last-Will QoS</label>
-            <input type="number" min="0" max="2" style={{width: 150}}/>
+            <input value={data.lastwillqos} type="number" min="0" max="2" style={{width: 150}}/>
           </div>
           <div style={{paddingLeft:75}}>
             <label id='label'>Last-Will Retain</label>
-            <input type="checkbox" style={{width: 40}}/> 
+            <input checked={data.lastwillretain} type="checkbox" style={{width: 40}}/> 
           </div>
         </fieldset>
         <fieldset>
           <div>
           <label id='label'>Last-Will Message</label>
-          <input type="text"style={{width: 900}}/>
+          <input value={data.lastwillmessage} type="text"style={{width: 900}}/>
           </div>
         </fieldset>
       </form>
