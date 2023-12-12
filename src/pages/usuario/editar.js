@@ -96,6 +96,7 @@ export default function PaginaEditar(){
             <label id='label'>Last-Will Retain</label>
             <input type="checkbox" style={{width: 40}}/> 
           </div>
+          <button type="submit" className={styles.button} style={{marginLeft: 30}}>Editar</button>
         </fieldset>
       </form>
     </div>

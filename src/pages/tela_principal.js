@@ -24,7 +24,7 @@ export default function tela_principal(){
         return infos.name;
       }
     } catch(error){
-
+      console.log("erro")
     }
   };
   const infos = fetchData();

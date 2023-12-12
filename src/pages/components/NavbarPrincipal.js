@@ -17,38 +17,10 @@ export default function NavbarPrincipal({ onOpenModal }) {
                 <li className={`${styles.dropdown} ${styles.spaceRight}`}>
                     <span>☰</span>
                     <ul className={styles.dropdownContent}>
-                        <li>
-                            <h2 className={styles.lh2}>Broker</h2>
-                        </li>
-
-                        <li>
-                            <Link href="/broker/cadastrar">
-                                Cadastrar
-                            </Link>
-                        </li>
+                           
                         <li>
                             <Link href="/broker/listar">
-                                Listar
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/broker/detalhar">
-                                Detalhar
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/broker/editar">
-                                Editar
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/broker/remover">
-                                Remover
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/broker/testar">
-                                Testar
+                            <h2 className={styles.lh2}>Broker</h2>
                             </Link>
 
                             <Link href="/usuario/listar">
@@ -58,11 +30,10 @@ export default function NavbarPrincipal({ onOpenModal }) {
                             <Link href="/Dispositivo/listar">
                                 <h1 className={styles.lh2}>Dispositivo</h1>
                             </Link>
-                                <li>
+                               
                                     <Link href="/Dispositivo/grupo-de-dispositivos">
-                                        Grupo de Dispositivos
+                                    <h2 className={styles.lh2}> Grupo de Dispositivos</h2>
                                     </Link>
-                                </li>
 
 
                         </li>

@@ -29,7 +29,7 @@ export default function PaginaListar() {
           ListarDispositivo(broker)
         ))}
           <div>
-            <a href="cadastrar">Deseja adicionar um novo dispositivo?</a>
+            <a href="cadastrar">Deseja adicionar um novo broker?</a>
           </div>
       </fieldset>
     </>

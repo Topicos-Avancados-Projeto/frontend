@@ -2,6 +2,28 @@ import NavbarPrincipal from "../components/NavbarPrincipal"
 import styles from '@/styles/CadastroDisp.module.css'
 
 export default function PaginaCadastrar() {
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        try {
+          const response = await fetch('http://localhost:3003/dispositivo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+              tipoDispositivo,
+            }),
+          });
+    
+          const data = await response.json();
+          console.log(data);
+        } catch (error) {
+            console.error('Erro ao fazer a solicitação HTTP:', error);
+        }
+      };
     return (
         <>
             <NavbarPrincipal />
