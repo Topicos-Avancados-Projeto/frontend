@@ -62,23 +62,28 @@ export default function Cadastro() {
                 <CadastroCard titulo="Cadastre-se">
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <label>Nome</label>
-                        <Input type="text" 
+                        <Input 
+                        id="nameCad"
+                        type="text" 
                         placeholder="Digite seu nome" 
                         value={name}
                         onChange={(e) => setName(e.target.value)}/>
                         <label>CPF</label>
                         <Input type="text" 
+                        id="cpfCad"
                         placeholder="Enter a value" 
                         value={cpf}
                         onChange={(e) => setCpf(e.target.value)}/>
                         <label>Email</label>
                         <Input type="email" 
+                        id="emailCad"
                         placeholder="Enter an email" 
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}/>
                         <label>Password</label>
 
                         <Input
+                        id="passCad"
                             type={passwordVisible ? 'text' : 'password'}
                             placeholder="Enter your password"
                             value={password}
@@ -95,6 +100,7 @@ export default function Cadastro() {
                             <label>Data de nascimento</label>
                         <form className={styles.form2}>                            
                             <input   
+                            id="diaCad"
                                 style={{padding: '20px' }}
                                 type="number"
                                 placeholder="Dia"
@@ -102,19 +108,21 @@ export default function Cadastro() {
                             />                          
                             <input
                             style={{padding: '20px' }}
+                            id="mesCad"
                                 type="text"
                                 placeholder="Mês"
                                 onChange={(e)=>setMes(e.target.value)}
                             />                            
                             <input
                             style={{padding: '20px' }}
+                            id="anoCad"
                                 type="number"
                                 placeholder="Ano"
                                 onChange={(e)=>setAno(e.target.value)}
                             />
                         </form>
 
-                            <Button type="submit">Cadastrar</Button>
+                            <Button id="cadastrarBut" type="submit">Cadastrar</Button>
 
 
                         <div className={styles.cadastrado}>
