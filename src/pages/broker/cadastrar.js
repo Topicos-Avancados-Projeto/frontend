@@ -8,9 +8,9 @@ async function getId(){
 
 export default function PaginaCadastrar(){
     const [cleansession, setCleanSession] = useState(false);
-    const [user_id, setID] = useState('');
+    const [user_id, setID] = useState('101010');
     const [name, setName] = useState('');
-    const [description, setDescription] = useState('mjhvgh');
+    const [description, setDescription] = useState('Descrição Qualquer');
     const [broker_port, setPort] = useState(0);
     const [broker_host, setHost] = useState('');
     const [username, setUsername] = useState('');
