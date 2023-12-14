@@ -9,12 +9,12 @@ export default function Navbar(){
         </div>
       <ul className={styles.link_items}>
       <li>
-        <Link href="/cadastro">
+        <Link id='singinBt' href="/cadastro">
           Cadastre-se  
           </Link>
       </li>
       <li>
-        <Link href="/login">
+        <Link id='loginBt' href="/login">
            Login
           </Link>
       </li>

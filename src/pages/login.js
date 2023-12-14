@@ -49,10 +49,11 @@ import router from 'next/router';
          <LoginCard titulo="Login">
             <form className={styles.form} onSubmit={handleSubmit}>
                <label>CPF</label>
-               <Input type="text" placeholder="Enter a value" onChange={(e) => setCpf(e.target.value)}/>
+               <Input id="cpf" type="text" placeholder="Enter a value" onChange={(e) => setCpf(e.target.value)}/>
                <label>Password</label>
                
                   <Input
+                  id="senha"
                   type={passwordVisible ? 'text' : 'password'}
                   placeholder="Enter your password"
                   value={password}
@@ -65,7 +66,7 @@ import router from 'next/router';
                    >
                    {passwordVisible ? 'Ocultar Senha' : 'Mostrar Senha'}
                    </button>
-                     <Button type="submit">Entrar</Button>
+                     <Button id='submitBt' type="submit">Entrar</Button>
             </form>
            </LoginCard>
       </div>
