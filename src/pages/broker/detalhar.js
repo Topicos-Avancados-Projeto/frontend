@@ -82,7 +82,6 @@ export default function PaginaDetalhar(){
           <div>
           <label id='label'>Last-Will Message</label>
           <input value={data.lastwillmessage} type="text"style={{width: 900}}/>
-          <button type="submit" className={styles.button} style={{marginLeft: 30}}>Editar</button>
           </div>
         </fieldset>
       </form>

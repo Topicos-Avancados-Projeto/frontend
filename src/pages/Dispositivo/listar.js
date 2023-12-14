@@ -1,13 +1,14 @@
-import ListarDispositivoADM from "../components/ListarDispositivoADM"
+import ListarDispositivo from "../components/ListarDispositivos"
 import NavbarPrincipal from "../components/NavbarPrincipal"
 import styles from '@/styles/Dispositivo.module.css'
+import {useState, useEffect} from 'react';
 
 export default function PaginaListar(){
 
     const [data, setData] = useState([]);
     useEffect(()=>{
         const fetchData= async()=>{
-            const response = await fetch('http://localhost:3003/dispositivo',{
+            const response = await fetch('http://localhost:3003/device',{
                 headers:{
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer '+ localStorage.getItem('Authorization')
@@ -27,10 +28,9 @@ export default function PaginaListar(){
     <div className={styles.dispositivo}>
     <fieldset className={styles.fundolistar}>
         <fieldset className={styles.linhastabela}>
-            <ListarDispositivoADM />        
-            <ListarDispositivoADM />        
-            <ListarDispositivoADM />        
-            <ListarDispositivoADM />        
+            {data?.map((dispositivo)=>(
+                ListarDispositivo(dispositivo)
+            ))}
             <div className={styles.deseja}><a href="cadastrar">Deseja adicionar um novo dispositivo?</a></div>
         </fieldset>
     </fieldset>
