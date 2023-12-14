@@ -30,7 +30,6 @@ export default function PaginaListar(){
             {data?.map((user)=>(
                 ListarDispositivoADM(user)
             ))}
-            <div className={styles.deseja}><a href="cadastrar">Deseja adicionar um novo usuário?</a></div>
         </fieldset>
     </fieldset>
     </div>
