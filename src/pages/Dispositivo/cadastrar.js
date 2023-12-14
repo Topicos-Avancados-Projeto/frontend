@@ -7,7 +7,7 @@ export default function PaginaCadastrar() {
         e.preventDefault();
     
         try {
-          const response = await fetch('http://localhost:3003/dispositivo', {
+          const response = await fetch('http://localhost:3003/device', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

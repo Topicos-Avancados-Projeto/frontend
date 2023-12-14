@@ -8,7 +8,7 @@ async function getId(){
 
 export default function PaginaCadastrar(){
     const [cleansession, setCleanSession] = useState(false);
-    const [user_id, setID] = useState('sgdfsd');
+    const [user_id, setID] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('mjhvgh');
     const [broker_port, setPort] = useState(0);
@@ -38,9 +38,7 @@ export default function PaginaCadastrar(){
         }
     }
 
-    //tipos number: broker_port, lastwillqos e keepalive
     const handleSubmit = (e) =>{
-//        getId();
         const data={
             user_id,
             cleansession,
@@ -73,7 +71,7 @@ export default function PaginaCadastrar(){
             console.error('Erro ao fazer a solicitação HTTP');
         }
         const data = response.json();
-        setID(data.id); 
+        setID(data.id);
     }
 
     return(

@@ -37,6 +37,9 @@ export default function PaginaEditar(){
   const [lastwillqos, setLastWillQoS] = useState(data.lastwillqos);
   const [lastwillretain, setLastWillRetain] = useState(data.lastwillretain);
   const [keepalive, setKeepAlive] = useState(data.keepalive);
+  const [keepChanged, setKeepChanged] = useState(false);
+  const [portChanged, setPortChanged] = useState(false);
+  const [qosChanged, setQosChanged] = useState(false);
 
 
   const sendRequest = async(data)=>{
@@ -56,7 +59,6 @@ export default function PaginaEditar(){
     }
   }
 
-  //tipos number: broker_port, lastwillqos e keepalive
   const handleSubmit = (e)=>{
     const data = {
       user_id,
@@ -72,9 +74,15 @@ export default function PaginaEditar(){
       lastwillretain,
       keepalive
     }
-    data.broker_port = parseInt(data.broker_port)
-    data.lastwillqos = parseInt(data.lastwillqos)
-    data.keepalive = parseInt(data.keepalive)
+    if(keepChanged){
+      data.keepalive=parseInt(data.keepalive)
+    }
+    if(portChanged){
+      data.broker_port=parseInt(data.broker_port)
+    }
+    if(qosChanged){
+      data.lastwillqos=parseInt(data.lastwillqos)
+    }
     console.log(JSON.stringify(data));
     sendRequest(data);
   }
@@ -94,7 +102,7 @@ export default function PaginaEditar(){
           </div>
           <div>
             <label id='label'>Port</label>
-            <input placeholder={data.broker_port} type="number" style={{width: 70}} onChange={(e)=> setPort(e.target.value)}/>
+            <input placeholder={data.broker_port} type="number" style={{width: 70}} onChange={(e)=> setPort(e.target.value) & setPortChanged(true)}/>
           </div>
           <div>
             <label id='label'>Host</label>
@@ -113,7 +121,7 @@ export default function PaginaEditar(){
           </div>
           <div>
             <label id='label'>Keep Alive</label>
-            <input placeholder={data.keepalive} type="number" style={{width: 190}} onChange={(e)=> setKeepAlive(e.target.value)}/>
+            <input placeholder={data.keepalive} type="number" style={{width: 190}} onChange={(e)=> setKeepAlive(e.target.value) & setKeepChanged(true)}/>
           </div>
           <div>
             <label id='label'>Clean Session</label>
@@ -127,7 +135,7 @@ export default function PaginaEditar(){
           </div>
           <div> 
             <label id='label'>Last-Will QoS</label>
-            <input placeholder={data.lastwillqos} type="number" min="0" max="2" style={{width: 150}} onChange={(e)=> setLastWillQoS(e.target.value)}/>
+            <input placeholder={data.lastwillqos} type="number" min="0" max="2" style={{width: 150}} onChange={(e)=> setLastWillQoS(e.target.value) & setQosChanged(true)}/>
           </div>
           <div style={{paddingLeft:75}}>
             <label id='label'>Last-Will Retain</label>
